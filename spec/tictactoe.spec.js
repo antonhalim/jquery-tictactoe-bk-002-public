@@ -15,6 +15,7 @@ describe('javascript', function() {
     });     
   });
 
+  // This spec is  bit vague. I could get it pass pretty easily without fleshing out all the functionality. Maybe expect turn to be incremented by one.
   describe( "#doTurn", function() {
     it("should create an array of 9 empty values", function() {
       spyOn(window, "checkWinner");
@@ -26,6 +27,7 @@ describe('javascript', function() {
     });     
   });
 
+  // The board isn't keeping track of its state in this iteration. The only thing keeping track is the html.
   describe( "#updateState", function() {
     it("should add the mark of the player that moved into the correct index in the array and tell the board to update its state", function() {
       setFixtures('<body><table border="1" cellpadding="40"><tr><td data-x="0", data-y="0"></td><td data-x="1", data-y="0"></td><td data-x="2", data-y="0"></td></tr><tr><td data-x="0", data-y="1"></td><td data-x="1", data-y="1"></td><td data-x="2", data-y="1"></td></tr><tr><td data-x="0", data-y="2"></td><td data-x="1", data-y="2"></td><td data-x="2", data-y="2"></td></tr></table></body>')
