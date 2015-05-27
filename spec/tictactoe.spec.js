@@ -13,7 +13,7 @@ describe('javascript', function() {
       spyOn(window, "doTurn");
       $(selector).click();
       expect(window.doTurn).toHaveBeenCalled();
-    });     
+    });
   });
 
   describe( "#doTurn", function() {
@@ -31,13 +31,13 @@ describe('javascript', function() {
       expect(turn).toEqual(1);
       expect(window.updateState).toHaveBeenCalled;
       expect(window.checkWinner).toHaveBeenCalled;
-    });     
+    });
   });
 
   describe( "#player", function() {
     it("should return the mark of the current player when player is X", function() {
       expect(player()).toEqual("X");
-    });     
+    });
     it("should return the mark of the current player when player is O", function() {
       turn = 1;
       expect(player()).toEqual("O");
@@ -51,7 +51,7 @@ describe('javascript', function() {
       var selector = '[data-x="0"][data-y="0"]';
       $(selector).click();
       expect($(selector).html()).toEqual("X");
-    }); 
+    });
 
     it("calls on `player()`", function() {
       setFixtures('<body><table border="1" cellpadding="40"><tr><td data-x="0", data-y="0"></td><td data-x="1", data-y="0"></td><td data-x="2", data-y="0"></td></tr><tr><td data-x="0", data-y="1"></td><td data-x="1", data-y="1"></td><td data-x="2", data-y="1"></td></tr><tr><td data-x="0", data-y="2"></td><td data-x="1", data-y="2"></td><td data-x="2", data-y="2"></td></tr></table></body>');
@@ -60,7 +60,7 @@ describe('javascript', function() {
       var selector = '[data-x="1"][data-y="0"]';
       $(selector).click();
       expect(window.player).toHaveBeenCalled();
-    });     
+    });
   });
 
   describe( "#message", function() {
@@ -70,7 +70,7 @@ describe('javascript', function() {
       var string = "Player X Won!";
       message(string);
       expect($("#message").html()).toEqual(string);
-    });     
+    });
   });
 
   describe( "#checkWinner", function() {
@@ -82,8 +82,8 @@ describe('javascript', function() {
       $(selector).click()
       var selector = '[data-x="0"][data-y="1"]'
       $(selector).click()
-      expect(checkWinner()).toEqual(false)   
-    });     
+      expect(checkWinner()).toEqual(false)
+    });
 
     it("calls on 'message' and passes it the string 'Player X Won!' when player X wins vertically", function() {
       setFixtures('<body><table border="1" cellpadding="40"><tr><td data-x="0", data-y="0"></td><td data-x="1", data-y="0"></td><td data-x="2", data-y="0"></td></tr><tr><td data-x="0", data-y="1"></td><td data-x="1", data-y="1"></td><td data-x="2", data-y="1"></td></tr><tr><td data-x="0", data-y="2"></td><td data-x="1", data-y="2"></td><td data-x="2", data-y="2"></td></tr></table></body>');
@@ -96,7 +96,7 @@ describe('javascript', function() {
       $('[data-x="0"][data-y="2"]').click();
       // _X_|_O_|_O_
       // _X_|___|___
-      //  X |   |   
+      //  X |   |
       expect(window.message).toHaveBeenCalledWith("Player X Won!");
     });
 
@@ -111,8 +111,8 @@ describe('javascript', function() {
       $('[data-x="2"][data-y="2"]').click();
       // _X_|_O_|_O_
       // ___|_X_|___
-      //    |   | X 
-      expect(window.message).toHaveBeenCalledWith("Player X Won!"); 
+      //    |   | X
+      expect(window.message).toHaveBeenCalledWith("Player X Won!");
     });
   });
 
@@ -150,15 +150,15 @@ describe('javascript', function() {
       $('[data-x="2"][data-y="2"]').click();
       // _O_|_X_|_X_
       // ___|_O_|___
-      //    | X | O 
+      //    | X | O
       expect($("#message").html()).toEqual("Player O Won!");
       // ___|___|___
       // ___|___|___
-      //    |   |   
+      //    |   |
       expect(turn).toEqual(0);
       $("td").each(function() {
         expect($(this).html()).toEqual("")
-      }); 
+      });
     });
 
     it("resets the board and sets turn to zero when there is a tie", function() {
@@ -175,15 +175,15 @@ describe('javascript', function() {
       $('[data-x="2"][data-y="0"]').click();
       // _X_|_O_|_X_
       // _O_|_O_|_X_
-      //  X | X | O 
+      //  X | X | O
       expect($("#message").html()).toEqual("Tie game");
       // ___|___|___
       // ___|___|___
-      //    |   |   
+      //    |   |
       expect(turn).toEqual(0);
       $("td").each(function() {
         expect($(this).html()).toEqual("")
-      });  
+      });
     });
 
     it("allows client to play multiple game", function() {
@@ -200,11 +200,11 @@ describe('javascript', function() {
       $('[data-x="2"][data-y="0"]').click();
       // _X_|_O_|_X_
       // _O_|_O_|_X_
-      //  X | X | O 
+      //  X | X | O
       expect($("#message").html()).toEqual("Tie game");
       // ___|___|___
       // ___|___|___
-      //    |   |   
+      //    |   |
       expect(turn).toEqual(0);
       $("td").each(function() {
         expect($(this).html()).toEqual("")
@@ -217,11 +217,11 @@ describe('javascript', function() {
       $('[data-x="2"][data-y="2"]').click();
       // _O_|_X_|_X_
       // ___|_O_|___
-      //    | X | O 
+      //    | X | O
       expect($("#message").html()).toEqual("Player O Won!");
       // ___|___|___
       // ___|___|___
-      //    |   |   
+      //    |   |
       expect(turn).toEqual(0);
       $("td").each(function() {
         expect($(this).html()).toEqual("")
